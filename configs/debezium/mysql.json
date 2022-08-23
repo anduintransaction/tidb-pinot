@@ -1,0 +1,22 @@
+{
+  "name": "persons-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "database.hostname": "192.168.169.85",
+    "database.port": 4000,
+    "database.user": "root",
+    "database.password": "",
+    "database.server.name": "mysql",
+    "database.server.id": "223344",
+    "database.allowPublicKeyRetrieval": true,
+    "database.history.kafka.bootstrap.servers": "kafka:9092",
+    "database.history.kafka.topic": "mysql-history",
+    "database.include.list": "test",
+    "time.precision.mode": "connect",
+    "include.schema.changes": false,
+    "transforms": "unwrap",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": false,
+    "transforms.unwrap.delete.handling.mode": "rewrite"
+  }
+}

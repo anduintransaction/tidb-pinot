@@ -1,0 +1,16 @@
+{
+  "schemaName": "Persons",
+  "dimensionFieldSpecs": [
+    {
+      "name": "PersonID",
+      "dataType": "INT"
+    },
+    {
+      "name": "Name",
+      "dataType": "STRING"
+    }
+  ],
+  "primaryKeyColumns": ["PersonID"],
+  "metricFieldSpecs": [],
+  "dateTimeFieldSpecs": []
+}
