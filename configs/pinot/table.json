@@ -19,6 +19,18 @@
       "stream.kafka.consumer.prop.auto.offset.reset": "smallest"
     }
   },
+  "ingestionConfig": {
+    "transformConfigs": [
+      {
+        "columnName": "PersonID",
+        "transformFunction": "JSONPATHLONG(data, '$.PersonID')"
+      },
+      {
+        "columnName": "Name",
+        "transformFunction": "JSONPATHSTRING(data, '$.Name')"
+      }
+    ]
+  },
   "metadata": {
     "customConfigs": {}
   },
