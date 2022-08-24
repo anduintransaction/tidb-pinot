@@ -8,6 +8,10 @@
     {
       "name": "Name",
       "dataType": "STRING"
+    },
+    {
+      "name": "__deleted",
+      "dataType": "BOOLEAN"
     }
   ],
   "primaryKeyColumns": ["PersonID"],

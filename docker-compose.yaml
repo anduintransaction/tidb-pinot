@@ -20,8 +20,9 @@ services:
       - zookeeper
 
   pinot-controller:
-    image: apachepinot/pinot:0.10.0
+    image: pinot-canal
     command: "StartController -zkAddress zookeeper:2181"
+    restart: unless-stopped
     ports:
       - "9000:9000"
     volumes:
@@ -31,36 +32,38 @@ services:
       - zookeeper
 
   pinot-broker:
-    image: apachepinot/pinot:0.10.0
+    image: pinot-canal
     command: "StartBroker -zkAddress zookeeper:2181"
+    restart: unless-stopped
     depends_on:
       - pinot-controller
 
   pinot-server:
-    image: apachepinot/pinot:0.10.0
+    image: pinot-canal
     command: "StartServer -zkAddress zookeeper:2181"
+    restart: unless-stopped
     depends_on:
       - pinot-broker
 
-  jobmanager:
-    image: flink:1.15.1
-    command: jobmanager
-    volumes:
-      - ./libs:/opt/flink/connector-libs
-    environment:
-      - |
-        FLINK_PROPERTIES=
-        jobmanager.rpc.address: jobmanager
-        parallelism.default: 2
+  # jobmanager:
+  #   image: flink:1.15.1
+  #   command: jobmanager
+  #   volumes:
+  #     - ./libs:/opt/flink/connector-libs
+  #   environment:
+  #     - |
+  #       FLINK_PROPERTIES=
+  #       jobmanager.rpc.address: jobmanager
+  #       parallelism.default: 2
 
-  taskmanager:
-    image: flink:1.15.1
-    command: taskmanager
-    environment:
-      - |
-        FLINK_PROPERTIES=
-        jobmanager.rpc.address: jobmanager
-        taskmanager.numberOfTaskSlots: 2
-        parallelism.default: 2
-    depends_on:
-      - jobmanager
+  # taskmanager:
+  #   image: flink:1.15.1
+  #   command: taskmanager
+  #   environment:
+  #     - |
+  #       FLINK_PROPERTIES=
+  #       jobmanager.rpc.address: jobmanager
+  #       taskmanager.numberOfTaskSlots: 2
+  #       parallelism.default: 2
+  #   depends_on:
+  #     - jobmanager
