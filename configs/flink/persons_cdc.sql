@@ -1,4 +1,5 @@
 CREATE TABLE persons_cdc (
+  ts TIMESTAMP_LTZ METADATA FROM 'value.ingestion-timestamp' VIRTUAL,
   PersonID INT,
   Name STRING
 ) WITH (
@@ -12,14 +13,15 @@ CREATE TABLE persons_cdc (
 );
 
 CREATE TABLE persons_pinot (
+  ts BIGINT,
   PersonID INT,
-  Name STRING
+  Name STRING,
+  PRIMARY KEY (PersonID) NOT ENFORCED
 ) WITH (
- 'connector' = 'kafka',
- 'topic' = 'pinot_Persons',
+ 'connector' = 'upsert-kafka',
+ 'topic' = 'pinot_Persons_2',
  'properties.bootstrap.servers' = 'kafka:9092',
  'properties.group.id' = 'flink',
  'key.format' = 'raw',
- 'key.fields' = 'PersonID',
  'value.format' = 'json'
 );
