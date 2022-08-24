@@ -12,5 +12,12 @@
   ],
   "primaryKeyColumns": ["PersonID"],
   "metricFieldSpecs": [],
-  "dateTimeFieldSpecs": []
+  "dateTimeFieldSpecs": [
+    {
+      "name": "ts",
+      "dataType": "LONG",
+      "format": "1:SECONDS:EPOCH",
+      "granularity": "1:SECONDS"
+    }
+  ]
 }

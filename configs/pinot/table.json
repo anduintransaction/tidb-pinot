@@ -2,6 +2,8 @@
   "tableName": "Persons",
   "tableType": "REALTIME",
   "segmentsConfig": {
+    "timeColumnName": "ts",
+    "timeType": "SECONDS",
     "schemaName": "Persons",
     "segmentPushType": "REFRESH",
     "replicasPerPartition": "1"
@@ -36,5 +38,8 @@
   },
   "upsertConfig": {
     "mode": "FULL"
+  },
+  "routing": {
+    "instanceSelectorType": "strictReplicaGroup"
   }
 }

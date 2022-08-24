@@ -7,7 +7,8 @@ CREATE TABLE persons_cdc (
  'properties.bootstrap.servers' = 'kafka:9092',
  'properties.group.id' = 'flink',
  'format' = 'canal-json',
- 'scan.startup.mode' = 'earliest-offset'
+ 'scan.startup.mode' = 'earliest-offset',
+ 'properties.auto.offset.reset' = 'earliest'
 );
 
 CREATE TABLE persons_pinot (
