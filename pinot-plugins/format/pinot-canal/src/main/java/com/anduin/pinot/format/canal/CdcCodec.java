@@ -1,4 +1,4 @@
-package com.anduin.pinot;
+package com.anduin.pinot.format.canal;
 
 import java.util.List;
 import java.util.Map;

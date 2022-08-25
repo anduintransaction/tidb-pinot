@@ -1,4 +1,4 @@
-package com.anduin.pinot;
+package com.anduin.pinot.format.canal;
 
 import java.util.ArrayList;
 import java.util.Collections;
