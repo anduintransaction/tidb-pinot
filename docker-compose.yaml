@@ -20,7 +20,7 @@ services:
       - zookeeper
 
   pinot-controller:
-    image: pinot-canal
+    image: anduin/pinot:0.10.0.1
     command: "StartController -zkAddress zookeeper:2181"
     restart: unless-stopped
     ports:
@@ -32,14 +32,14 @@ services:
       - zookeeper
 
   pinot-broker:
-    image: pinot-canal
+    image: anduin/pinot:0.10.0.1
     command: "StartBroker -zkAddress zookeeper:2181"
     restart: unless-stopped
     depends_on:
       - pinot-controller
 
   pinot-server:
-    image: pinot-canal
+    image: anduin/pinot:0.10.0.1
     command: "StartServer -zkAddress zookeeper:2181"
     restart: unless-stopped
     depends_on:

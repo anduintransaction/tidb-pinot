@@ -11,4 +11,8 @@ INSERT INTO Persons(Name) VALUES ("User 2");
 INSERT INTO Persons(Name) VALUES ("User 3");
 INSERT INTO Persons(Name) VALUES ("User 4");
 
+UPDATE Persons SET Name = "User 2 (updated)" WHERE PersonID = 2;
+
+DELETE FROM Persons WHERE PersonID = 3;
+
 SELECT * FROM Persons;
