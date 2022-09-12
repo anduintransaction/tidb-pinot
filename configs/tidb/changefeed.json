@@ -1,0 +1,25 @@
+{
+  "changefeed_id": "kafka-changefeed",
+  "sink_uri": "kafka://127.0.0.1:9092/kafka-pinot-cdc?protocol=canal-json",
+  "engine": "unified",
+  "replica_config": {
+    "sink": {
+      "protocol": "canal-json",
+      "dispatchers": [
+        {
+          "matcher": ["test.*"],
+          "topic": "tidb_{schema}_{table}",
+          "partition": "index-value"
+        }
+      ]
+    },
+    "filter": {
+      "event_filters": [
+        {
+          "matcher": ["test.*"],
+          "ignore_event": ["all ddl"]
+        }
+      ]
+    }
+  }
+}
